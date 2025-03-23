@@ -27,13 +27,13 @@
 		"vscode": {
 			"extensions": [
 				"ms-azuretools.vscode-docker",
-				"msjsdiag.vscode-react-native",
-				"Postman.postman-for-vscode"
+				"Postman.postman-for-vscode",
+				"hashicorp.terraform"
 			]
 		}
 	},
 
-	"postCreateCommand": "docker volume create n8n_data && docker volume create traefik_data && docker-compose up -d"
+	"postCreateCommand": "docker volume create n8n_data && docker volume create traefik_data"
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
