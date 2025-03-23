@@ -47,6 +47,7 @@ services:
       - NODE_ENV=production
       - WEBHOOK_URL=http://127.0.0.1:5678/
       - GENERIC_TIMEZONE=${GENERIC_TIMEZONE}
+      - N8N_SECURE_COOKIE=${N8N_SECURE_COOKIE}
     volumes:
       - n8n_data:/home/node/.n8n
       - ./local-files:/files

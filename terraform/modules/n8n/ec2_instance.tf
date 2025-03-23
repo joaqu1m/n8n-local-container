@@ -42,6 +42,14 @@ resource "aws_instance" "n8n" {
   user_data = file("./modules/n8n/user_data.sh")
 }
 
+resource "aws_eip" "n8n_eip" {
+  instance = aws_instance.n8n.id
+}
+
 output "n8n_public_ip" {
   value = aws_instance.n8n.public_ip
+}
+
+output "n8n_elastic_ip" {
+  value = aws_eip.n8n_eip.public_ip
 }
