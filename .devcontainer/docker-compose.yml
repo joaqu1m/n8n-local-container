@@ -1,0 +1,11 @@
+name: n8n-test
+version: '3.8'
+services:
+  devcontainer:
+    container_name: n8n-test-devcontainer
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../..:/workspaces:cached
+    command: sleep infinity
