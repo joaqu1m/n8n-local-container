@@ -34,6 +34,8 @@ resource "aws_instance" "terraform_runner" {
   tags = {
     Name = "terraform-runner"
   }
+
+  user_data = file("./modules/startup/user_data.sh")
 }
 
 output "terraform_runner_public_ip" {
