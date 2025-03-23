@@ -27,7 +27,7 @@ services:
       - "5678:5678"
     labels:
       - traefik.enable=true
-      - traefik.http.routers.n8n.rule=Host(`127.0.0.1`)
+      - traefik.http.routers.n8n.rule=Host(`${N8N_HOST}`)
       - traefik.http.routers.n8n.tls=true
       - traefik.http.routers.n8n.entrypoints=web,websecure
       # - traefik.http.routers.n8n.tls.certresolver=mytlschallenge
@@ -41,11 +41,11 @@ services:
       - traefik.http.middlewares.n8n.headers.STSPreload=true
       - traefik.http.routers.n8n.middlewares=n8n@docker
     environment:
-      - N8N_HOST=127.0.0.1
+      - N8N_HOST=${N8N_HOST}
       - N8N_PORT=5678
       - N8N_PROTOCOL=http
       - NODE_ENV=production
-      - WEBHOOK_URL=http://127.0.0.1:5678/
+      - WEBHOOK_URL=http://${N8N_HOST}:5678/
       - GENERIC_TIMEZONE=${GENERIC_TIMEZONE}
       - N8N_SECURE_COOKIE=${N8N_SECURE_COOKIE}
     volumes:
