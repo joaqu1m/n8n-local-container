@@ -2,7 +2,7 @@
 
 - [gere um keypair](https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#CreateKeyPair:) com o nome "iagiliza-key"
 
-- rode o projeto em um devcontainer
+- rode o projeto em um devcontainer para emular um linux com todas as libs disponíveis
 
 - execute `./terraform/startup/init-terraform.sh`
 

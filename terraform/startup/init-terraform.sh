@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Parar execução em caso de erro
 set -e
 
 rm -rf ~/.aws/
@@ -17,6 +16,5 @@ cat > ~/.aws/credentials
 
 cd ./terraform/startup
 
-# Inicializar Terraform
 terraform init
 terraform apply -auto-approve
