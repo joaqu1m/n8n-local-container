@@ -1,13 +1,3 @@
-provider "aws" {
-  region = "us-east-1"
-}
-
-terraform {
-  backend "local" {
-    path = "./terraform-state/terraform.tfstate"
-  }
-}
-
 resource "aws_security_group" "terraform_runner_sg" {
   name = "terraform-runner-sg"
 
@@ -26,17 +16,23 @@ resource "aws_security_group" "terraform_runner_sg" {
   }
 }
 
+resource "aws_iam_instance_profile" "terraform_runner_profile" {
+  name = "terraform-runner-profile"
+  role = var.iam_role_id
+}
+
 resource "aws_instance" "terraform_runner" {
-  instance_type   = "t3.micro"
-  key_name        = "iagiliza-key"
-  ami             = "ami-08b5b3a93ed654d19" // Amazon Linux 2023 AMI
-  security_groups = [aws_security_group.terraform_runner_sg.name]
+  instance_type        = "t3.micro"
+  key_name             = var.key_name
+  ami                  = var.ami_id
+  security_groups      = [aws_security_group.terraform_runner_sg.name]
+  iam_instance_profile = aws_iam_instance_profile.terraform_runner_profile.name
 
   // TODO: Setup automático da máquina com CI/CD para rodar terraform. Isso inclui possivelmente criar e instanciar um serviço com Jenkins
   // Esperando aprovação do tema e definição do nome da org para prosseguir;
 
   tags = {
-    Name = "TerraformRunner"
+    Name = "terraform-runner"
   }
 }
 

@@ -4,6 +4,6 @@
 
 - rode o projeto em um devcontainer para emular um linux com todas as libs disponíveis
 
-- execute `./terraform/startup/init-terraform.sh`
+- execute `./terraform/scripts/startup-modules-init.sh`
 
 - insira as credenciais coletadas pelo "AWS Details" na interface de inicialização do lab (Ctrl + D para finalizar a inserção)
