@@ -39,7 +39,9 @@ resource "aws_instance" "n8n" {
     Name = "n8n-ec2"
   }
 
-  user_data = file("./modules/n8n/user_data.sh")
+  user_data = templatefile("./modules/n8n/user_data.sh.tpl", {
+    n8n_public_ip = aws_eip.n8n_eip.public_ip
+  })
 }
 
 resource "aws_eip" "n8n_eip" {
