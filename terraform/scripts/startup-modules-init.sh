@@ -25,6 +25,7 @@ cd ./terraform
 rm -rf ./terraform-state
 rm -rf ./.terraform
 rm -f ./.terraform.lock.hcl
+rm -f ./iagiliza-key.pem
 
 mv ./modules.tf ./modules.txt
 
