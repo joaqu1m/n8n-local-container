@@ -23,7 +23,7 @@ resource "aws_iam_instance_profile" "terraform_runner_profile" {
 
 resource "aws_instance" "terraform_runner" {
   instance_type        = "t3.micro"
-  key_name             = var.key_name
+  key_name             = aws_key_pair.terraform_runner_key.key_name
   ami                  = var.ami_id
   security_groups      = [aws_security_group.terraform_runner_sg.name]
   iam_instance_profile = aws_iam_instance_profile.terraform_runner_profile.name
@@ -35,7 +35,7 @@ resource "aws_instance" "terraform_runner" {
     Name = "terraform-runner"
   }
 
-  user_data = file("./modules/startup/user_data.sh")
+  user_data = file("${path.module}/user_data.sh")
 }
 
 output "terraform_runner_public_ip" {

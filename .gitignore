@@ -1,3 +1,4 @@
 iagiliza-key.pem
 terraform-state
 .terraform**
+**.env

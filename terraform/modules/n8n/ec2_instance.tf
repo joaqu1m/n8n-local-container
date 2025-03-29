@@ -39,17 +39,12 @@ resource "aws_instance" "n8n" {
     Name = "n8n-ec2"
   }
 
-  user_data = templatefile("./modules/n8n/user_data.sh.tpl", {
-    n8n_public_ip = aws_eip.n8n_eip.public_ip
-  })
+  user_data = file("${path.module}/user_data.sh")
 }
 
 resource "aws_eip" "n8n_eip" {
   instance = aws_instance.n8n.id
-}
-
-output "n8n_public_ip" {
-  value = aws_instance.n8n.public_ip
+  depends_on = [aws_instance.n8n]
 }
 
 output "n8n_elastic_ip" {
