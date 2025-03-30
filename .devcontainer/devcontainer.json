@@ -26,9 +26,7 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"ms-azuretools.vscode-docker",
-				"hashicorp.terraform",
-				"foxundermoon.shell-format"
+				"ms-azuretools.vscode-docker"
 			]
 		}
 	},
