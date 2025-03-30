@@ -14,6 +14,10 @@ resource "aws_security_group" "terraform_runner_sg" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
+  tags = {
+    Name = "terraform-runner-sg"
+  }
 }
 
 resource "aws_iam_instance_profile" "terraform_runner_profile" {
@@ -32,12 +36,10 @@ resource "aws_instance" "terraform_runner" {
   // Esperando aprovação do tema e definição do nome da org para prosseguir;
 
   tags = {
-    Name = "terraform-runner"
+    Name        = "terraform-runner"
+    Environment = "management"
+    Managed-by  = "terraform"
   }
 
   user_data = file("${path.module}/user_data.sh")
-}
-
-output "terraform_runner_public_ip" {
-  value = aws_instance.terraform_runner.public_ip
 }

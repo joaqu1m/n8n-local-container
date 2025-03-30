@@ -27,8 +27,8 @@
 		"vscode": {
 			"extensions": [
 				"ms-azuretools.vscode-docker",
-				"Postman.postman-for-vscode",
-				"hashicorp.terraform"
+				"hashicorp.terraform",
+				"foxundermoon.shell-format"
 			]
 		}
 	},
