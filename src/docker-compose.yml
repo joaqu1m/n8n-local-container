@@ -23,8 +23,6 @@ services:
   n8n:
     image: docker.n8n.io/n8nio/n8n
     restart: always
-    ports:
-      - "5678:5678"
     labels:
       - traefik.enable=true
       - traefik.http.routers.n8n.rule=Host(`${N8N_HOST}`)
@@ -43,9 +41,9 @@ services:
     environment:
       - N8N_HOST=${N8N_HOST}
       - N8N_PORT=5678
-      - N8N_PROTOCOL=http
+      - N8N_PROTOCOL=${N8N_PROTOCOL}
       - NODE_ENV=production
-      - WEBHOOK_URL=http://${N8N_HOST}:5678/
+      - WEBHOOK_URL=${N8N_PROTOCOL}://${N8N_HOST}/
       - GENERIC_TIMEZONE=${GENERIC_TIMEZONE}
       - N8N_SECURE_COOKIE=${N8N_SECURE_COOKIE}
     volumes:
